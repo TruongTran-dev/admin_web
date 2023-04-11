@@ -40,6 +40,8 @@ const AdminCmsLayout = (props) => {
   const navigate = useNavigate();
   const cmsInfor = Cookies.get("ACCOUNT_INFO");
 
+  console.log("============= cmsInfor", cmsInfor);
+
   // const xsrfToken = !!Cookies.get("XSRF-TOKEN");
 
   useEffect(() => {

@@ -31,7 +31,7 @@ export const useUserForm = (props) => {
       email: user?.email ?? "",
       username: user?.username ?? "",
       password: user?.password ?? "",
-      id: user?.id ?? "",
+      confirmPassword: user?.confirmPassword ?? "",
       fullName: user?.fullName ?? "",
       phone: user?.phone ?? "",
       roles: user?.roles?.map((item) => item?.name) ?? [],
@@ -43,6 +43,17 @@ export const useUserForm = (props) => {
         password: Yup.mixed().when("id", {
           is: (val) => !val,
           then: Yup.string().required().min(6).max(40),
+        }),
+        confirmPassword: Yup.mixed().when("id", {
+          is: (val) => !val,
+          then: Yup.string()
+            .trim()
+            .min(6)
+            .max(40)
+            .oneOf(
+              [Yup.ref("password"), null],
+              "Xác nhận password không hợp lệ"
+            ),
         }),
         fullName: Yup.string().required(),
         phone: Yup.string().required().phone(),

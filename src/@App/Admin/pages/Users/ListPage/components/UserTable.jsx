@@ -62,6 +62,7 @@ const UserTable = (props) => {
                 key={item?.id}
                 label={RoleOptions?.find((i) => i?.value === item?.name)?.label}
                 variant="outlined"
+                className="rounded-4"
               />
             ))}
           </Box>

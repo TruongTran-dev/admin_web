@@ -13,29 +13,12 @@ import Cookies from "js-cookie";
 const AdminInfo = ({ color }) => {
   const navigate = useNavigate();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleLogout = async () => {
-    // Remove all Cookie
-    Object.keys(Cookies.get()).forEach(function (cookieName) {
-      var neededAttributes = {};
-      Cookies.remove(cookieName, neededAttributes);
-    });
-    await navigate(`/admin/login`);
-  };
+  const authToken = Cookies.get("ACCOUNT_INFO");
+  console.log("============= authToken", authToken);
 
   return (
     <>
       <Box
-        onClick={handleClick}
         sx={{
           py: 3,
           px: 3,
@@ -83,7 +66,7 @@ const AdminInfo = ({ color }) => {
               }}
               component="span"
             >
-              Admin User
+              {authToken ? JSON.parse(authToken)?.username : null}
             </Box>
             {/* <Box
 							sx={{
