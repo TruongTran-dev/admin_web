@@ -33,6 +33,7 @@ const UserTable = (props) => {
   const RoleOptions = [
     { value: "ROLE_ADMIN", label: "Admin" },
     { value: "ROLE_TEACHER", label: "Giáo viên" },
+    { value: "ROLE_PARENTS", label: "Phụ huynh" },
   ];
 
   const columns = useMemo(() => {

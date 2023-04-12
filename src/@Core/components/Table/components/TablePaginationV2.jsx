@@ -104,7 +104,7 @@ const TablePaginationV2 = (props) => {
       <Box className="flex w-full my-10 md:my-0 md:w-auto">
         <Box className="mx-auto">
           <Pagination
-            color="primary"
+            color="secondary"
             boundaryCount={0}
             onChange={(e, value) => {
               setPage(value);

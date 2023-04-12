@@ -30,11 +30,11 @@ export const useUserForm = (props) => {
       id: user?.id ?? "",
       email: user?.email ?? "",
       username: user?.username ?? "",
-      password: user?.password ?? "",
-      confirmPassword: user?.confirmPassword ?? "",
+      password: user?.password ?? null,
+      confirmPassword: user?.confirmPassword ?? null,
       fullName: user?.fullName ?? "",
       phone: user?.phone ?? "",
-      role: user?.role?.map((item) => item?.name) ?? [],
+      roles: user?.roles?.map((item) => item?.name) ?? [],
     },
     resolver: yupResolver(
       Yup.object({
@@ -57,7 +57,7 @@ export const useUserForm = (props) => {
         }),
         fullName: Yup.string().required(),
         phone: Yup.string().required().phone(),
-        role: Yup.array().min(1),
+        roles: Yup.array().min(1),
       })
     ),
   });

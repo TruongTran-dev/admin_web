@@ -77,8 +77,8 @@ const AdminCmsLayout = (props) => {
           </IconButton>
           <img
             className="aspect-video"
-            style={{ height: "60px" }}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgB80IUrYc7YRX8rQwNaU_DlAzPff0XsGTcw&usqp=CAU"
+            style={{ height: "60px", borderRadius: "30px" }}
+            src="https://img.freepik.com/premium-vector/cms-content-management-line-icon_116137-4484.jpg?w=826"
           />
           <Box className="ml-auto">
             <Box
