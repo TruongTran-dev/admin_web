@@ -36,7 +36,7 @@ const AdminInfo = ({ color }) => {
               fontSize: 24,
               backgroundColor: orange[500],
             }}
-            src="https://khoinguonsangtao.vn/wp-content/uploads/2022/09/hinh-anh-avatar-ff-ngau.jpg"
+            src="https://static.toiimg.com/thumb/resizemode-4,msid-76729750,imgsize-249247,width-720/76729750.jpg"
           />
         </Box>
         <Box

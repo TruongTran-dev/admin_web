@@ -10,7 +10,14 @@ class News extends BaseService {
 
   getNewsDetail = (id) => {
     const endpoint = `/api/v1/news/detail/${id}`;
-    return this.request.getNewsDetail(endpoint);
+    return this.request.get(endpoint);
+  };
+
+  uploadImage = (file) => {
+    const endpoint = "/api/v1/news/upload";
+    const formData = new FormData();
+    formData.append("file", file);
+    return this.request.post(endpoint, formData);
   };
 }
 

@@ -41,13 +41,9 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 const LeftMenu = (props) => {
   const navigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const authToken = Cookies.get("ACCOUNT_INFO")
+    ? JSON.parse(Cookies.get("ACCOUNT_INFO"))
+    : null;
 
   const handleLogout = async () => {
     // Remove all Cookie
@@ -73,18 +69,20 @@ const LeftMenu = (props) => {
             />
           </ListItemButton>
         </ListItem>
-        {menuAdminConfig.map((item, index) => {
-          if (item?.type === "collapse") {
-            return <LeftMenuItemCollapse key={index} item={item} />;
-          }
-          return <LeftMenuItem key={index} item={item} />;
-        })}
-        {menuTeacherConfig.map((item, index) => {
-          if (item?.type === "collapse") {
-            return <LeftMenuItemCollapse key={index} item={item} />;
-          }
-          return <LeftMenuItem key={index} item={item} />;
-        })}
+        {authToken?.roles?.includes("ROLE_ADMIN") &&
+          menuAdminConfig.map((item, index) => {
+            if (item?.type === "collapse") {
+              return <LeftMenuItemCollapse key={index} item={item} />;
+            }
+            return <LeftMenuItem key={index} item={item} />;
+          })}
+        {authToken?.roles?.includes("ROLE_TEACHER") &&
+          menuTeacherConfig.map((item, index) => {
+            if (item?.type === "collapse") {
+              return <LeftMenuItemCollapse key={index} item={item} />;
+            }
+            return <LeftMenuItem key={index} item={item} />;
+          })}
         <ListItem disablePadding>
           <ListItemButton>
             <Icon>

@@ -24,7 +24,7 @@ import {
   CoreActionDelete,
   CoreActionEdit,
 } from "../../../../../../@Core/components/Table/components/CoreTableAction";
-import { ROUTER_ADMIN } from "../../../../configs/constants";
+import { ROUTER_ADMIN, ROUTER_TEACHER } from "../../../../configs/constants";
 
 const NewsTable = (props) => {
   const navigate = useNavigate();
@@ -35,6 +35,16 @@ const NewsTable = (props) => {
       columnHelper.accessor("id", {
         cell: (info) => info.getValue(),
         header: "Id",
+      }),
+      columnHelper.accessor("mediaUrl", {
+        header: "Ảnh",
+        cell: (info) => (
+          <img
+            src={info.getValue()}
+            style={{ width: "100px" }}
+            className="aspect-video"
+          />
+        ),
       }),
       columnHelper.accessor("title", {
         cell: (info) => info.getValue(),
@@ -53,7 +63,7 @@ const NewsTable = (props) => {
             <div className="flex">
               <CoreActionEdit
                 onClick={() =>
-                  navigate(`${ROUTER_ADMIN.user.list}/${data?.id}`)
+                  navigate(`${ROUTER_TEACHER.news.list}/${data?.id}`)
                 }
               />
               <CoreActionDelete

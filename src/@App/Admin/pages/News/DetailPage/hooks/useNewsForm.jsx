@@ -28,36 +28,15 @@ export const useNewsForm = (props) => {
     mode: "onTouched",
     defaultValues: {
       id: news?.id ?? "",
-      email: news?.email ?? "",
-      username: news?.username ?? "",
-      password: news?.password ?? "",
-      confirmPassword: news?.confirmPassword ?? "",
-      fullName: news?.fullName ?? "",
-      phone: news?.phone ?? "",
-      role: news?.role?.map((item) => item?.name) ?? [],
+      title: news?.title ?? "",
+      content: news?.content ?? "",
+      mediaUrl: news?.mediaUrl ?? "",
     },
     resolver: yupResolver(
       Yup.object({
-        email: Yup.string().required().email(),
-        username: Yup.string().required(),
-        password: Yup.mixed().when("id", {
-          is: (val) => !val,
-          then: Yup.string().required().min(6).max(40),
-        }),
-        confirmPassword: Yup.mixed().when("id", {
-          is: (val) => !val,
-          then: Yup.string()
-            .trim()
-            .min(6)
-            .max(40)
-            .oneOf(
-              [Yup.ref("password"), null],
-              "Xác nhận password không hợp lệ"
-            ),
-        }),
-        fullName: Yup.string().required(),
-        phone: Yup.string().required().phone(),
-        role: Yup.array().min(1),
+        title: Yup.string().trim().min(3).required(),
+        content: Yup.string().trim().min(3).required(),
+        mediaUrl: Yup.string().trim().required(),
       })
     ),
   });
