@@ -86,7 +86,7 @@ const AdminInfo = ({ color }) => {
               color: "white",
             }}
           >
-            ADMIN
+            {authToken ? JSON.parse(authToken)?.roles?.join(" || ") : null}
           </Box>
         </Box>
       </Box>

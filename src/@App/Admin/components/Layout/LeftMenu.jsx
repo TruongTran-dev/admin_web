@@ -33,10 +33,11 @@ import {
 } from "@mui/material";
 
 import LeftMenuItem from "../Menu/LeftMenuItem";
-import { menuAdminConfig } from "../../configs/menuConfig";
+import { menuAdminConfig, menuTeacherConfig } from "../../configs/menuConfig";
 import LeftMenuItemCollapse from "../Menu/LeftMenuItemCollapse";
 import { authService } from "../../services/authService";
 import { BiLogOut } from "react-icons/bi";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 const LeftMenu = (props) => {
   const navigate = useNavigate();
@@ -62,7 +63,23 @@ const LeftMenu = (props) => {
       <Toolbar />
       <Divider />
       <List>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <HomeOutlinedIcon />
+            <ListItemText
+              primary={"Trang chủ"}
+              className="ml-4"
+              onClick={() => navigate("/admin/home-page")}
+            />
+          </ListItemButton>
+        </ListItem>
         {menuAdminConfig.map((item, index) => {
+          if (item?.type === "collapse") {
+            return <LeftMenuItemCollapse key={index} item={item} />;
+          }
+          return <LeftMenuItem key={index} item={item} />;
+        })}
+        {menuTeacherConfig.map((item, index) => {
           if (item?.type === "collapse") {
             return <LeftMenuItemCollapse key={index} item={item} />;
           }

@@ -26,14 +26,9 @@ import {
 } from "../../../../../../@Core/components/Table/components/CoreTableAction";
 import { ROUTER_ADMIN } from "../../../../configs/constants";
 
-const UserTable = (props) => {
+const NewsTable = (props) => {
   const navigate = useNavigate();
   const { tableHandler, handleDelete } = useAdminPageContext();
-
-  const RoleOptions = [
-    { value: "ROLE_ADMIN", label: "Admin" },
-    { value: "ROLE_TEACHER", label: "Giáo viên" },
-  ];
 
   const columns = useMemo(() => {
     return [
@@ -41,32 +36,13 @@ const UserTable = (props) => {
         cell: (info) => info.getValue(),
         header: "Id",
       }),
-      columnHelper.accessor("fullName", {
-        header: "Họ và tên",
+      columnHelper.accessor("title", {
+        cell: (info) => info.getValue(),
+        header: "Tiêu đề",
       }),
-      columnHelper.accessor("email", {
-        header: "Email",
-      }),
-      columnHelper.accessor("username", {
-        header: "Username",
-      }),
-      columnHelper.accessor("phone", {
-        header: "Số điện thoại",
-      }),
-      columnHelper.accessor("roles", {
-        header: "Quyền",
-        cell: (info) => (
-          <Box className="space-x-2">
-            {info.getValue().map((item) => (
-              <Chip
-                key={item?.id}
-                label={RoleOptions?.find((i) => i?.value === item?.name)?.label}
-                variant="outlined"
-                className="rounded-4"
-              />
-            ))}
-          </Box>
-        ),
+      columnHelper.accessor("content", {
+        cell: (info) => info.getValue(),
+        header: "Nội dung",
       }),
 
       columnHelper.accessor("action", {
@@ -81,7 +57,7 @@ const UserTable = (props) => {
                 }
               />
               <CoreActionDelete
-                disabled={!!data?.roles?.find((i) => i?.name === "ROLE_ADMIN")}
+                disabled={data?.role?.find((i) => i?.name === "ROLE_ADMIN")}
                 onConfirmDelete={() => handleDelete(data?.id)}
               />
             </div>
@@ -102,4 +78,4 @@ const UserTable = (props) => {
 
 //ListSpotTable.propTypes = {}
 
-export default React.memo(UserTable);
+export default React.memo(NewsTable);

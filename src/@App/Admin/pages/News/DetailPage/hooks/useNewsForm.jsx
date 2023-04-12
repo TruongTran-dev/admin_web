@@ -17,24 +17,24 @@ import { useForm } from "react-hook-form";
 import { errorMsg, successMsg } from "../../../../../../@Core/helper/Message";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Yup from "../../../../../../@Core/helper/Yup";
-import { userSerivce } from "../../../../services/userService";
 import { useNavigate } from "react-router-dom";
+import { newsSerivce } from "../../../../services/newsService";
 
-export const useUserForm = (props) => {
-  const { user, isEdit } = props;
+export const useNewsForm = (props) => {
+  const { news, isEdit } = props;
 
   const navigate = useNavigate();
   const methodForm = useForm({
     mode: "onTouched",
     defaultValues: {
-      id: user?.id ?? "",
-      email: user?.email ?? "",
-      username: user?.username ?? "",
-      password: user?.password ?? "",
-      confirmPassword: user?.confirmPassword ?? "",
-      fullName: user?.fullName ?? "",
-      phone: user?.phone ?? "",
-      role: user?.role?.map((item) => item?.name) ?? [],
+      id: news?.id ?? "",
+      email: news?.email ?? "",
+      username: news?.username ?? "",
+      password: news?.password ?? "",
+      confirmPassword: news?.confirmPassword ?? "",
+      fullName: news?.fullName ?? "",
+      phone: news?.phone ?? "",
+      role: news?.role?.map((item) => item?.name) ?? [],
     },
     resolver: yupResolver(
       Yup.object({
@@ -65,17 +65,17 @@ export const useUserForm = (props) => {
   const onSubmit = methodForm.handleSubmit(
     async (data) => {
       try {
-        await (isEdit ? userSerivce.save(data) : userSerivce.addUser(data));
-        navigate("/admin/user");
+        await newsSerivce.save(data);
+        navigate("/teacher/news");
         successMsg(
           isEdit
-            ? "Cập nhật tài khoản thành công"
-            : "Thêm mới tài khoản thành công"
+            ? "Cập nhật bài viết thành công"
+            : "Thêm mới bài viết thành công"
         );
       } catch (e) {
         errorMsg(
           e,
-          isEdit ? "Cập nhật tài khoản thất bại" : "Thêm mới tài khoản thất bại"
+          isEdit ? "Cập nhật bài viết thất bại" : "Thêm mới bài viết thất bại"
         );
       }
     },

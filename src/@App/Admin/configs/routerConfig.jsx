@@ -1,4 +1,4 @@
-import { ROUTER_ADMIN } from "./constants";
+import { ROUTER_ADMIN, ROUTER_TEACHER } from "./constants";
 import React from "react";
 /*
  * Created Date: 11-10-2022, 12:22:10 am
@@ -22,6 +22,9 @@ const LazyCategoryList = React.lazy(() => import("../pages/Category/ListPage"));
 const LazyCategoryDetail = React.lazy(() =>
   import("../pages/Category/DetailPage")
 );
+
+const LazyNewsList = React.lazy(() => import("../pages/News/ListPage"));
+const LazyNewsDetail = React.lazy(() => import("../pages/News/DetailPage"));
 
 const LazyLogoCategoryList = React.lazy(() => import("../pages/CategoryLogo"));
 
@@ -59,5 +62,16 @@ export const routerAdminConfig = [
   {
     path: ROUTER_ADMIN.categoryLogo.list,
     element: <LazyLogoCategoryList />,
+  },
+];
+
+export const routerTeacherConfig = [
+  {
+    path: ROUTER_TEACHER.news.edit,
+    element: <LazyNewsDetail />,
+  },
+  {
+    path: ROUTER_TEACHER.news.list,
+    element: <LazyNewsList />,
   },
 ];

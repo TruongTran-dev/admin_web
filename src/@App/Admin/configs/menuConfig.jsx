@@ -13,31 +13,30 @@
  * ----------	---	----------------------------------------------------------
  */
 
-import { ROUTER_ADMIN } from "./constants";
+import { ROUTER_ADMIN, ROUTER_TEACHER } from "./constants";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
+import { Icon } from "@mui/material";
+import { BiNews } from "react-icons/bi";
 
 export const menuAdminConfig = [
-  {
-    title: "Trang chủ",
-    url: ROUTER_ADMIN.homePage,
-    icon: <HomeOutlinedIcon />,
-  },
   {
     title: "Quản lý user",
     url: ROUTER_ADMIN.user.list,
     icon: <GroupOutlinedIcon />,
   },
+];
+
+export const menuTeacherConfig = [
   {
-    title: "Quản lý danh mục",
-    url: ROUTER_ADMIN.category.list,
-    icon: <CategoryOutlinedIcon />,
-  },
-  {
-    title: "Quản lý logo danh mục",
-    url: ROUTER_ADMIN.categoryLogo.list,
-    icon: <ImageOutlinedIcon />,
+    title: "Quản lý bài viết",
+    url: ROUTER_TEACHER.news.list,
+    icon: (
+      <Icon>
+        <BiNews />
+      </Icon>
+    ),
   },
 ];

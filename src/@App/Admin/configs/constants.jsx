@@ -33,3 +33,10 @@ export const ROUTER_ADMIN = {
     list: basePath + "/category-logo",
   },
 };
+
+export const ROUTER_TEACHER = {
+  news: {
+    list: "/teacher/news",
+    edit: "/teacher/news/:id",
+  },
+};

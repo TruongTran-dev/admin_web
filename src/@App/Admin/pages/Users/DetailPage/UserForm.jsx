@@ -41,7 +41,7 @@ const UserForm = (props) => {
           <CoreAutocomplete
             label="Quyền"
             control={control}
-            name="roles"
+            name="role"
             placeholder="Chọn quyền"
             className="w-full px-8 mb-20 sm:w-1/2"
             options={[

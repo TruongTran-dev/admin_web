@@ -21,6 +21,7 @@ import { ROUTER_ADMIN } from "./Admin/configs/constants";
 import {
   routerAdminConfig,
   routerAuthConfig,
+  routerTeacherConfig,
 } from "./Admin/configs/routerConfig";
 import Page404 from "./Admin/components/Error/Page404";
 
@@ -51,6 +52,17 @@ export const appRouterConfig = createBrowserRouter([
     element: <AdminCmsLayout />,
     children: [
       ...routerAdminConfig,
+      {
+        path: "*",
+        element: <Page404 />,
+      },
+    ],
+  },
+  {
+    path: "teacher",
+    element: <AdminCmsLayout />,
+    children: [
+      ...routerTeacherConfig,
       {
         path: "*",
         element: <Page404 />,
