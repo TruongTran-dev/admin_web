@@ -18,15 +18,12 @@ import React from "react";
 const LazyHomePage = React.lazy(() => import("../pages/HomePage"));
 const LazyUserList = React.lazy(() => import("../pages/Users/ListPage"));
 const LazyUserDetail = React.lazy(() => import("../pages/Users/DetailPage"));
-const LazyCategoryList = React.lazy(() => import("../pages/Category/ListPage"));
-const LazyCategoryDetail = React.lazy(() =>
-  import("../pages/Category/DetailPage")
-);
 
 const LazyNewsList = React.lazy(() => import("../pages/News/ListPage"));
 const LazyNewsDetail = React.lazy(() => import("../pages/News/DetailPage"));
 
-const LazyLogoCategoryList = React.lazy(() => import("../pages/CategoryLogo"));
+const LazySubjectList = React.lazy(() => import("../pages/Subject"));
+const LazyClassList = React.lazy(() => import("../pages/Class"));
 
 // auth
 const LazyLogin = React.lazy(() => import("../pages/Auth/Login"));
@@ -52,16 +49,8 @@ export const routerAdminConfig = [
     element: <LazyUserDetail />,
   },
   {
-    path: ROUTER_ADMIN.category.list,
-    element: <LazyCategoryList />,
-  },
-  {
-    path: ROUTER_ADMIN.category.edit,
-    element: <LazyCategoryDetail />,
-  },
-  {
-    path: ROUTER_ADMIN.categoryLogo.list,
-    element: <LazyLogoCategoryList />,
+    path: ROUTER_ADMIN.subjects.list,
+    element: <LazySubjectList />,
   },
 ];
 
@@ -73,5 +62,9 @@ export const routerTeacherConfig = [
   {
     path: ROUTER_TEACHER.news.list,
     element: <LazyNewsList />,
+  },
+  {
+    path: ROUTER_TEACHER.classes.list,
+    element: <LazyClassList />,
   },
 ];

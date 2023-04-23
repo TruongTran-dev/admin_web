@@ -25,12 +25,8 @@ export const ROUTER_ADMIN = {
     list: basePath + "/user",
     edit: basePath + "/user/:id",
   },
-  category: {
-    list: basePath + "/category",
-    edit: basePath + "/category/:id",
-  },
-  categoryLogo: {
-    list: basePath + "/category-logo",
+  subjects: {
+    list: basePath + "/subject",
   },
 };
 
@@ -38,5 +34,9 @@ export const ROUTER_TEACHER = {
   news: {
     list: "/teacher/news",
     edit: "/teacher/news/:id",
+  },
+  classes: {
+    list: "/teacher/classes",
+    edit: "/teacher/classes/:id",
   },
 };

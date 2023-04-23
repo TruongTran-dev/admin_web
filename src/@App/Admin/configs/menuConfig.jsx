@@ -20,12 +20,19 @@ import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import { Icon } from "@mui/material";
 import { BiNews } from "react-icons/bi";
+import SubjectIcon from "@mui/icons-material/Subject";
+import ClassIcon from "@mui/icons-material/Class";
 
 export const menuAdminConfig = [
   {
     title: "Quản lý user",
     url: ROUTER_ADMIN.user.list,
     icon: <GroupOutlinedIcon />,
+  },
+  {
+    title: "Quản lý môn học",
+    url: ROUTER_ADMIN.subjects.list,
+    icon: <SubjectIcon />,
   },
 ];
 
@@ -38,5 +45,11 @@ export const menuTeacherConfig = [
         <BiNews />
       </Icon>
     ),
+  },
+
+  {
+    title: "Quản lý lớp học",
+    url: ROUTER_TEACHER.classes.list,
+    icon: <ClassIcon />,
   },
 ];

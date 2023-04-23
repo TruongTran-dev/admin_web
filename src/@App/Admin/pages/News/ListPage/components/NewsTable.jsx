@@ -1,18 +1,3 @@
-/*
- * Created Date: 12-10-2022, 3:36:47 pm
- * Author: Peter
- * Email: phantrung696@gmail.com
- * -----
- * Last Modified:
- * Modified By:
- * -----
- * Copyright (c) 2022 PROS+ Group , Inc
- * -----
- * HISTORY:
- * Date      	By	Comments
- * ----------	---	----------------------------------------------------------
- */
-
 import React, { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAdminPageContext } from "../../../../components/Provider/AdminPageProvider";
