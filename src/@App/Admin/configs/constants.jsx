@@ -35,6 +35,10 @@ export const ROUTER_TEACHER = {
     list: "/teacher/news",
     edit: "/teacher/news/:id",
   },
+  student: {
+    list: "/teacher/student",
+    edit: "/teacher/student/:id",
+  },
   classes: {
     list: "/teacher/classes",
     edit: "/teacher/classes/:id",

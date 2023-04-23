@@ -7,7 +7,7 @@ import { useController, useFormContext } from "react-hook-form";
 
 // import PropTypes from 'prop-types'
 
-const UploadImage = (props) => {
+const UploadAvatar = (props) => {
   const { name } = props;
   const { control, watch, setValue } = useFormContext();
   const {
@@ -31,9 +31,9 @@ const UploadImage = (props) => {
       setUrlImage(res);
       setValue(name, res);
 
-      successMsg("Upload ảnh thành công");
+      successMsg("Upload ảnh đại diện thành công");
     } catch (e) {
-      errorMsg("Upload ảnh thất bại");
+      errorMsg("Upload ảnh đại diện thất bại");
     }
     setLoading(false);
   };
@@ -46,17 +46,20 @@ const UploadImage = (props) => {
   const renderImage = () => {
     if (loading) {
       return (
-        <Box className="border-1 w-[200px] aspect-video flex w-full flex-col justify-center cursor-pointer items-center hover:opacity-80">
+        <Box className="border-1 w-[200px] h-[200px] aspect-video flex flex-col rounded-full justify-center cursor-pointer items-center hover:opacity-80">
           <CircularProgress />
         </Box>
       );
     }
     return urlImage ? (
-      <img src={urlImage} className="mx-auto w-[200px]" />
+      <img
+        src={urlImage}
+        className="mx-auto w-[200px] h-[200px] rounded-full"
+      />
     ) : (
       <Box
         sx={{ border: "1px solid #ccc" }}
-        className="border-1 w-[200px] aspect-video flex w-full flex-col justify-center items-center hover:opacity-80 mx-auto"
+        className="border-1 w-[200px] h-[200px] aspect-video flex flex-col justify-center rounded-full items-center hover:opacity-80 mx-auto"
       >
         {loading ? <CircularProgress /> : <BiImageAdd size={60} />}
       </Box>
@@ -89,8 +92,8 @@ const UploadImage = (props) => {
   );
 };
 
-// UploadImage.defaultProps = {}
+// UploadAvatar.defaultProps = {}
 
-// UploadImage.propTypes = {}
+// UploadAvatar.propTypes = {}
 
-export default React.memo(UploadImage);
+export default React.memo(UploadAvatar);

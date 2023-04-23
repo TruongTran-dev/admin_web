@@ -14,14 +14,12 @@
  */
 
 import { ROUTER_ADMIN, ROUTER_TEACHER } from "./constants";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
-import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
-import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import { Icon } from "@mui/material";
 import { BiNews } from "react-icons/bi";
 import SubjectIcon from "@mui/icons-material/Subject";
 import ClassIcon from "@mui/icons-material/Class";
+import AccessibilityIcon from "@mui/icons-material/Accessibility";
 
 export const menuAdminConfig = [
   {
@@ -51,5 +49,10 @@ export const menuTeacherConfig = [
     title: "Quản lý lớp học",
     url: ROUTER_TEACHER.classes.list,
     icon: <ClassIcon />,
+  },
+  {
+    title: "Quản lý học sinh",
+    url: ROUTER_TEACHER.student.list,
+    icon: <AccessibilityIcon />,
   },
 ];

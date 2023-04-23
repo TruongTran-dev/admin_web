@@ -22,6 +22,11 @@ const LazyUserDetail = React.lazy(() => import("../pages/Users/DetailPage"));
 const LazyNewsList = React.lazy(() => import("../pages/News/ListPage"));
 const LazyNewsDetail = React.lazy(() => import("../pages/News/DetailPage"));
 
+const LazyStudentList = React.lazy(() => import("../pages/Student/ListPage"));
+const LazyStudentDetail = React.lazy(() =>
+  import("../pages/Student/DetailPage")
+);
+
 const LazySubjectList = React.lazy(() => import("../pages/Subject"));
 const LazyClassList = React.lazy(() => import("../pages/Class"));
 
@@ -62,6 +67,14 @@ export const routerTeacherConfig = [
   {
     path: ROUTER_TEACHER.news.list,
     element: <LazyNewsList />,
+  },
+  {
+    path: ROUTER_TEACHER.student.edit,
+    element: <LazyStudentDetail />,
+  },
+  {
+    path: ROUTER_TEACHER.student.list,
+    element: <LazyStudentList />,
   },
   {
     path: ROUTER_TEACHER.classes.list,
