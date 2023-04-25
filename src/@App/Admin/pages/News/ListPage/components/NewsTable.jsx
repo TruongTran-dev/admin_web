@@ -10,6 +10,7 @@ import {
   CoreActionEdit,
 } from "../../../../../../@Core/components/Table/components/CoreTableAction";
 import { ROUTER_ADMIN, ROUTER_TEACHER } from "../../../../configs/constants";
+import moment from "moment/moment";
 
 const NewsTable = (props) => {
   const navigate = useNavigate();
@@ -21,6 +22,15 @@ const NewsTable = (props) => {
         cell: (info) => info.getValue(),
         header: "Id",
       }),
+
+      columnHelper.accessor("title", {
+        cell: (info) => info.getValue(),
+        header: "Tiêu đề",
+      }),
+      columnHelper.accessor("content", {
+        cell: (info) => info.getValue(),
+        header: "Nội dung",
+      }),
       columnHelper.accessor("mediaUrl", {
         header: "Ảnh",
         cell: (info) => (
@@ -31,13 +41,13 @@ const NewsTable = (props) => {
           />
         ),
       }),
-      columnHelper.accessor("title", {
-        cell: (info) => info.getValue(),
-        header: "Tiêu đề",
+      columnHelper.accessor("createdAt", {
+        cell: (info) => moment(info.getValue()).format("DD/MM/YYYY"),
+        header: "Thời gian tạo",
       }),
-      columnHelper.accessor("content", {
-        cell: (info) => info.getValue(),
-        header: "Nội dung",
+      columnHelper.accessor("createBy", {
+        cell: (info) => "Người tạo",
+        header: "Người tạo",
       }),
 
       columnHelper.accessor("action", {
