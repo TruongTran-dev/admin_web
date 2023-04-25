@@ -41,12 +41,12 @@ const NewsTable = (props) => {
           />
         ),
       }),
-      columnHelper.accessor("createdAt", {
+      columnHelper.accessor("createdTime", {
         cell: (info) => moment(info.getValue()).format("DD/MM/YYYY"),
         header: "Thời gian tạo",
       }),
       columnHelper.accessor("createBy", {
-        cell: (info) => "Người tạo",
+        cell: (info) => info.getValue(),
         header: "Người tạo",
       }),
 
