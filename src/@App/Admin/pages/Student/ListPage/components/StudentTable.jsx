@@ -4,12 +4,13 @@ import { useAdminPageContext } from "../../../../components/Provider/AdminPagePr
 import CoreTable, {
   columnHelper,
 } from "../../../../../../@Core/components/Table/CoreTable";
-import { Avatar, Box, Chip } from "@mui/material";
+import { Avatar, Box, Chip, IconButton, Tooltip } from "@mui/material";
 import {
   CoreActionDelete,
   CoreActionEdit,
 } from "../../../../../../@Core/components/Table/components/CoreTableAction";
 import { ROUTER_TEACHER } from "../../../../configs/constants";
+import CreditScoreIcon from "@mui/icons-material/CreditScore";
 
 const StudentTable = (props) => {
   const navigate = useNavigate();
@@ -57,9 +58,20 @@ const StudentTable = (props) => {
           const data = row.original;
           return (
             <div className="flex">
+              <Tooltip title="Xem điểm">
+                <IconButton
+                  onClick={() =>
+                    navigate(`/teacher/learning-result/${data?.id}`)
+                  }
+                  color="warning"
+                >
+                  <CreditScoreIcon />
+                </IconButton>
+              </Tooltip>
+
               <CoreActionEdit
                 onClick={() =>
-                  navigate(`${ROUTER_TEACHER.news.list}/${data?.id}`)
+                  navigate(`${ROUTER_TEACHER.student.list}/${data?.id}`)
                 }
               />
               <CoreActionDelete

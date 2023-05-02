@@ -46,13 +46,15 @@ const CoreDatePicker = ({
     rules,
   });
 
+  console.log("============= value", value);
+
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <TextField
       fullWidth
       variant="outlined"
       required={required}
       label={label}
-      value={value ? moment(value).format("YYYY/MM/DD") : null}
+      value={value ?? null}
       // onClick={onClick}
       InputProps={{
         endAdornment: (
@@ -95,12 +97,17 @@ const CoreDatePicker = ({
       }}
     >
       <ReactDatePicker
-        selected={value}
+        selected={new Date(value)}
+        dateFormat="dd-MM-yyyy"
         onChange={(date) => onChange(date)}
         customInput={<CustomInput />}
         withPortal
         ref={ref}
         onCalendarClose={onBlur}
+        peekNextMonth
+        showMonthDropdown
+        showYearDropdown
+        dropdownMode="select"
       />
       {helperText && <FormHelperText>{helperText}</FormHelperText>}
       {error && error.message && (

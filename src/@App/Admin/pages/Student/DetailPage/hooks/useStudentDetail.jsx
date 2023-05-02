@@ -13,7 +13,7 @@ export const useStudentDetail = (props) => {
     data: student,
     run: getStudent,
     loading: loadingStudent,
-  } = useRequest(studentService.find, {
+  } = useRequest(studentService.getDetailStudent, {
     manual: true,
   });
 

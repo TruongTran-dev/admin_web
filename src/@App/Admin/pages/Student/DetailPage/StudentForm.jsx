@@ -25,11 +25,15 @@ import CoreDatePicker from "../../../../../@Core/components/Input/CoreDatePicker
 import CoreAutocomplete from "../../../../../@Core/components/Input/CoreAutocomplete";
 
 const StudentForm = (props) => {
+  const { isEdit } = props;
   const { methodForm, onSubmit } = useStudentForm(props);
   const {
     control,
+    watch,
     formState: { isDirty, isSubmitting },
   } = methodForm;
+
+  console.log("============= watch()", watch());
 
   return (
     <FormProvider {...methodForm}>
@@ -63,18 +67,20 @@ const StudentForm = (props) => {
               label="Ngày sinh"
               placeholder="Chọn ngày sinh"
             />
-            <CoreAutocomplete
-              control={control}
-              name="semesterYear"
-              label="Học kì"
-              returnValueType="enum"
-              required
-              className="w-full px-12 mb-40"
-              options={[
-                { value: "2023-2024", label: "2023-2024" },
-                { value: "2024-2025", label: "2024-2025" },
-              ]}
-            />
+            {!isEdit && (
+              <CoreAutocomplete
+                control={control}
+                name="semesterYear"
+                label="Học kì"
+                returnValueType="enum"
+                required
+                className="w-full px-12 mb-40"
+                options={[
+                  { value: "2023-2024", label: "2023-2024" },
+                  { value: "2024-2025", label: "2024-2025" },
+                ]}
+              />
+            )}
           </Box>
         </Box>
         <Box className="text-center">

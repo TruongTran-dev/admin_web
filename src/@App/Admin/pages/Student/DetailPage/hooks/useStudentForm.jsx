@@ -19,6 +19,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Yup from "../../../../../../@Core/helper/Yup";
 import { useNavigate } from "react-router-dom";
 import { studentService } from "../../../../services/studentService";
+import moment from "moment";
 
 export const useStudentForm = (props) => {
   const { student, isEdit } = props;
@@ -30,9 +31,9 @@ export const useStudentForm = (props) => {
       id: student?.id ?? "",
       name: student?.name ?? "",
       imageUrl: student?.imageUrl ?? "",
-      classId: student?.classId ?? null,
+      classId: student?.classResponse?.id ?? null,
       dateOfBirth: student?.dateOfBirth ?? null,
-      semesterYear: student?.semesterYear ?? null,
+      semesterYear: null,
     },
     resolver: yupResolver(
       Yup.object({
@@ -40,7 +41,10 @@ export const useStudentForm = (props) => {
         imageUrl: Yup.string().trim().required(),
         classId: Yup.mixed().nullable().required(),
         dateOfBirth: Yup.mixed().nullable().required(),
-        semesterYear: Yup.mixed().nullable().required(),
+        semesterYear: Yup.mixed().when("name", {
+          is: (val) => !isEdit,
+          then: Yup.mixed().nullable().required(),
+        }),
       })
     ),
   });

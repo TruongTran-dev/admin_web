@@ -28,6 +28,10 @@ const LazyStudentDetail = React.lazy(() =>
 );
 
 const LazySubjectList = React.lazy(() => import("../pages/Subject"));
+
+const LazyLearningResult = React.lazy(() =>
+  import("../pages/Student/LearningResult")
+);
 const LazyClassList = React.lazy(() => import("../pages/Class"));
 
 // auth
@@ -79,5 +83,9 @@ export const routerTeacherConfig = [
   {
     path: ROUTER_TEACHER.classes.list,
     element: <LazyClassList />,
+  },
+  {
+    path: ROUTER_TEACHER.learningResult,
+    element: <LazyLearningResult />,
   },
 ];

@@ -14,7 +14,7 @@ const DetailPage = (props) => {
     </Box>
   ) : (
     <AdminContentPage
-      pageTitle="Thêm mới học sinh"
+      pageTitle={isEdit ? "Chỉnh sửa học sinh" : "Thêm mới học sinh"}
       headerAction={
         <Button
           variant="contained"
