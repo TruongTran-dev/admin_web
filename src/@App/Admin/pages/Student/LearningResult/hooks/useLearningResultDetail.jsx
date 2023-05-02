@@ -38,5 +38,13 @@ export const useLearningResultDetail = (props) => {
   useEffect(() => {
     getStudent(id);
   }, []);
-  return { learningResult, loading, student, loadingStudent, control };
+  return {
+    learningResult,
+    loading,
+    student,
+    loadingStudent,
+    control,
+    time,
+    getLearningResult,
+  };
 };

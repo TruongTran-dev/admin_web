@@ -16,6 +16,12 @@ class Student extends BaseService {
     const endpoint = "/api/v1/learning-result";
     return this.request.get(endpoint, { params });
   };
+
+  editLearningResult = (data) => {
+    console.log("============= data", data);
+    const endpoint = `/api/v1/learning-result/${data?.id}`;
+    return this.request.put(endpoint, data);
+  };
 }
 
 export const studentService = new Student();

@@ -1,20 +1,44 @@
 import React from "react";
 import { useLearningResultDetail } from "./hooks/useLearningResultDetail";
-import { Box, Card, CircularProgress, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CircularProgress,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import moment from "moment";
 import LearningResultTable from "./LearningResultTable";
 import CoreAutocomplete from "../../../../../@Core/components/Input/CoreAutocomplete";
+import { BiArrowBack } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 // import PropTypes from 'prop-types'
 
 const LearnignResult = (props) => {
-  const { learningResult, loading, student, loadingStudent, control } =
-    useLearningResultDetail();
+  const {
+    learningResult,
+    loading,
+    student,
+    loadingStudent,
+    control,
+    getLearningResult,
+    time,
+  } = useLearningResultDetail();
+
+  const navigate = useNavigate();
   return loadingStudent ? (
     <Box className="mt-40 text-center">
       <CircularProgress />
     </Box>
   ) : (
     <Card className="p-20">
+      <Tooltip title="Trở về">
+        <IconButton color="error" onClick={() => navigate("/teacher/student")}>
+          <BiArrowBack />
+        </IconButton>
+      </Tooltip>
       <Box className="flex flex-nowrap mb-20">
         <Box className="w-1/4 border-1 p-12 text-[14px]">
           <Box>Nhập điểm cho:</Box>
@@ -65,7 +89,18 @@ const LearnignResult = (props) => {
           />
         </Box>
       </Box>
-      <LearningResultTable loading={loading} learningResult={learningResult} />
+      {loading ? (
+        <Box className="mt-20 text-center">
+          <CircularProgress />
+        </Box>
+      ) : (
+        <LearningResultTable
+          loading={loading}
+          learningResult={learningResult}
+          getLearningResult={getLearningResult}
+          time={time}
+        />
+      )}
     </Card>
   );
 };
