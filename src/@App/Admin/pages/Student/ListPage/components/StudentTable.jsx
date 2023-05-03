@@ -11,6 +11,7 @@ import {
 } from "../../../../../../@Core/components/Table/components/CoreTableAction";
 import { ROUTER_TEACHER } from "../../../../configs/constants";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
+import moment from "moment";
 
 const StudentTable = (props) => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const StudentTable = (props) => {
         header: "Họ tên học sinh",
       }),
       columnHelper.accessor("dateOfBirth", {
-        cell: (info) => info.getValue(),
+        cell: (info) => moment(info.getValue()).format("DD-MM-YYYY"),
         header: "Ngày sinh",
       }),
       columnHelper.accessor("hk1SubjectMediumScore", {

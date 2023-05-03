@@ -69,6 +69,22 @@ const LearnignResult = (props) => {
             className="w-[200px] ml-12"
             options={[
               {
+                label: "Học kì 1 2022-2023",
+                time: {
+                  year: "2022-2023",
+                  term: 1,
+                },
+                value: "Học kì 1 2022-2023",
+              },
+              {
+                label: "Học kì 2 2022-2023",
+                time: {
+                  year: "2022-2023",
+                  term: 2,
+                },
+                value: "Học kì 2 2022-2023",
+              },
+              {
                 label: "Học kì 1 2023-2024",
                 time: {
                   year: "2023-2024",

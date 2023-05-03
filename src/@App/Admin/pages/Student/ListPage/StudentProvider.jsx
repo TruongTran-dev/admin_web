@@ -40,10 +40,6 @@ const StudentProvider = (props) => {
     }
   };
 
-  useEffect(() => {
-    tableHandler.handleFetchData();
-  }, []);
-
   const data = {
     tableHandler,
     handleDelete,

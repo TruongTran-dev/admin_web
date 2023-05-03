@@ -76,6 +76,7 @@ const StudentForm = (props) => {
                 required
                 className="w-full px-12 mb-40"
                 options={[
+                  { value: "2022-2023", label: "2022-2023" },
                   { value: "2023-2024", label: "2023-2024" },
                   { value: "2024-2025", label: "2024-2025" },
                 ]}

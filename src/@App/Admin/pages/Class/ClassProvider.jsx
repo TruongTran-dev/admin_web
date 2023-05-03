@@ -25,7 +25,7 @@ const ClassProvider = (props) => {
     },
     resolver: yupResolver(
       Yup.object({
-        name: Yup.string().trim().required().min(3).max(255),
+        name: Yup.string().trim().required().max(255),
         subjectIds: Yup.array().min(1),
         year: Yup.mixed().nullable().required(),
       })

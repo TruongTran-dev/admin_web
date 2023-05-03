@@ -5,7 +5,7 @@ import CoreTable, {
 import { useMemo } from "react";
 import CoreInput from "../../../../../@Core/components/Input/CoreInput";
 import { useForm } from "react-hook-form";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { errorMsg, successMsg } from "../../../../../@Core/helper/Message";
 import { studentService } from "../../../services/studentService";
 import { useParams } from "react-router-dom";
@@ -19,6 +19,8 @@ const LearningResultTable = (props) => {
       result: learningResult,
     },
   });
+
+  console.log("============= time", time);
 
   const result = watch("result");
 
@@ -87,8 +89,28 @@ const LearningResultTable = (props) => {
         header: "Điểm KT hki",
       }),
       columnHelper.accessor("semesterSummaryScore", {
-        cell: (info) => info.getValue() ?? "-",
-        header: "Điểm TB hki",
+        cell: ({ row }) => {
+          const findResult = result?.find((i) => i?.id === row.original.id);
+          console.log("============= findResult", findResult);
+          if (row.original.semesterSummaryScore) {
+            return row.original.semesterSummaryScore;
+          }
+          if (
+            findResult?.oralTestScore &&
+            findResult?.m15TestScore &&
+            findResult?.m45TestScore &&
+            findResult?.semesterTestScore
+          ) {
+            return (
+              ((findResult?.oralTestScore + findResult?.m15TestScore) / 2 +
+                2 * findResult?.m45TestScore +
+                3 * findResult?.semesterTestScore) /
+              6
+            );
+          }
+          return "-";
+        },
+        header: "Điểm TB môn",
       }),
       columnHelper.accessor("action", {
         header: "Hành động",
@@ -101,10 +123,8 @@ const LearningResultTable = (props) => {
                   const findResult = result?.find(
                     (i) => i?.id === row.original.id
                   );
-                  console.log("============= findResult", findResult);
                   try {
                     await studentService.editLearningResult(findResult);
-                    getLearningResult({ studentId: id, ...time?.time });
                     successMsg(
                       `Lưu điểm môn học ${data?.subjectName} thành công`
                     );
@@ -123,7 +143,28 @@ const LearningResultTable = (props) => {
   }, [JSON.stringify(result)]);
 
   return (
-    <CoreTable data={learningResult} loading={loading} columns={columns} />
+    <>
+      <CoreTable data={learningResult} loading={loading} columns={columns} />
+      <Box className="text-center mt-20">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={async () => {
+            try {
+              await studentService.calcLearningResult({
+                studentId: id,
+                semesterYear: time?.time?.year,
+              });
+              successMsg("Tính điểm tổng kết thành công");
+            } catch (error) {
+              errorMsg("Tính điểm tổng kết thất bại");
+            }
+          }}
+        >
+          Tính điểm TB học kì {time?.time?.term}
+        </Button>
+      </Box>
+    </>
   );
 };
 
