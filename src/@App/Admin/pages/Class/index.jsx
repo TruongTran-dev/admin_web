@@ -13,7 +13,7 @@ const ListPage = (props) => {
           <ClassForm />
         </Card>
         <Card className="w-2/3 border-t-4 border-t-[#62CDFF]">
-          <CardHeader title="Danh sách môn học" />
+          <CardHeader title="Danh sách lớp học" />
           <CardContent>
             <ClassTable />
           </CardContent>

@@ -23,7 +23,6 @@ const ClassTable = (props) => {
       setValue("name", res?.name);
       setValue("year", res?.year);
       setValue("subjectIds", res?.subjectDatas?.map((i) => i?.id) ?? []);
-      console.log("============= res", res);
     } catch (error) {
       errorMsg("Lấy chi tiết lớp học thất bại");
     }
@@ -37,10 +36,14 @@ const ClassTable = (props) => {
         cell: (info) => info.getValue(),
         header: "Id",
       }),
+      columnHelper.accessor("code", {
+        cell: (info) => info.getValue(),
+        header: "Mã lớp học",
+      }),
 
       columnHelper.accessor("name", {
         cell: (info) => info.getValue(),
-        header: "Tên môn học",
+        header: "Tên lớp học",
       }),
 
       columnHelper.accessor("year", {

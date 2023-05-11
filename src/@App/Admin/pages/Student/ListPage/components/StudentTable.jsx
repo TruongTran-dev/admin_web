@@ -23,6 +23,10 @@ const StudentTable = (props) => {
         cell: (info) => info.getValue(),
         header: "Id",
       }),
+      columnHelper.accessor("code", {
+        cell: (info) => info.getValue(),
+        header: "SSID",
+      }),
       columnHelper.accessor("imageUrl", {
         header: "Ảnh đại diện",
         cell: (info) => (

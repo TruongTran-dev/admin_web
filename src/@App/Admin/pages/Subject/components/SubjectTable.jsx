@@ -27,6 +27,10 @@ const SubjectTable = (props) => {
         cell: (info) => info.getValue(),
         header: "Id",
       }),
+      columnHelper.accessor("code", {
+        cell: (info) => info.getValue(),
+        header: "Mã môn học",
+      }),
 
       columnHelper.accessor("name", {
         cell: (info) => info.getValue(),
