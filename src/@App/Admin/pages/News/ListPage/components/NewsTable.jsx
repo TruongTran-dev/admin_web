@@ -4,13 +4,14 @@ import { useAdminPageContext } from "../../../../components/Provider/AdminPagePr
 import CoreTable, {
   columnHelper,
 } from "../../../../../../@Core/components/Table/CoreTable";
-import { Box, Chip } from "@mui/material";
+import { Box, Chip, IconButton } from "@mui/material";
 import {
   CoreActionDelete,
   CoreActionEdit,
 } from "../../../../../../@Core/components/Table/components/CoreTableAction";
 import { ROUTER_ADMIN, ROUTER_TEACHER } from "../../../../configs/constants";
 import moment from "moment/moment";
+import { BiLinkAlt } from "react-icons/bi";
 
 const NewsTable = (props) => {
   const navigate = useNavigate();
@@ -31,14 +32,18 @@ const NewsTable = (props) => {
         cell: (info) => info.getValue(),
         header: "Nội dung",
       }),
+      columnHelper.accessor("typeMedia", {
+        cell: (info) => (info.getValue() == 0 ? "Video" : "Ảnh"),
+        header: "Kiểu media",
+      }),
       columnHelper.accessor("mediaUrl", {
-        header: "Ảnh",
+        header: "Link",
         cell: (info) => (
-          <img
-            src={info.getValue()}
-            style={{ width: "100px" }}
-            className="aspect-video"
-          />
+          <a href={info.getValue()} target="_blank">
+            <IconButton color="primary">
+              <BiLinkAlt />
+            </IconButton>
+          </a>
         ),
       }),
       columnHelper.accessor("createdTime", {

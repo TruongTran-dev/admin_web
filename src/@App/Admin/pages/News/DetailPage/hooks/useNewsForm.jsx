@@ -31,6 +31,7 @@ export const useNewsForm = (props) => {
       title: news?.title ?? "",
       content: news?.content ?? "",
       mediaUrl: news?.mediaUrl ?? "",
+      typeMedia: news?.typeMedia ?? 0,
     },
     resolver: yupResolver(
       Yup.object({

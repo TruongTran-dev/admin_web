@@ -30,15 +30,18 @@ const UserForm = (props) => {
   const { methodForm, onSubmit } = useNewsForm(props);
   const {
     control,
+    watch,
     formState: { isDirty, isSubmitting },
   } = methodForm;
+
+  console.log("============= watch", watch());
 
   return (
     <FormProvider {...methodForm}>
       <form onSubmit={onSubmit} className="py-20">
         <Box className="flex flex-nowrap">
           <Box className="w-1/3 mr-20">
-            <UploadImage name="mediaUrl" />
+            <UploadImage name="mediaUrl" nameType="typeMedia" />
           </Box>
           <Box className="w-2/3">
             <CoreInput
