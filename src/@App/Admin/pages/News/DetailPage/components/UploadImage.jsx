@@ -37,9 +37,9 @@ const UploadImage = (props) => {
     const file = e.target?.files?.[0];
     const fileRef = ref(
       storage,
-      `${typeMedia == 0 ? "vides" : "images"}/${
-        file?.name
-      }_${new Date().getTime()}`
+      `${typeMedia == 0 ? "videos" : "images"}/${
+        typeMedia == 0 ? "video" : "image"
+      }_news_${new Date().getTime()}`
     );
     const uploadTask = uploadBytesResumable(fileRef, file);
 

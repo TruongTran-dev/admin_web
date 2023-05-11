@@ -4,6 +4,8 @@ import { newsSerivce } from "../../../../services/newsService";
 import { errorMsg, successMsg } from "../../../../../../@Core/helper/Message";
 import { BiImageAdd } from "react-icons/bi";
 import { useController, useFormContext } from "react-hook-form";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "../../../../../../@Core/helper/firebase";
 
 // import PropTypes from 'prop-types'
 
@@ -24,23 +26,31 @@ const UploadAvatar = (props) => {
     inputFileRef.current.click();
   };
 
-  const handleUploadFile = async (file) => {
-    setLoading(true);
-    try {
-      const res = await newsSerivce.uploadImage(file);
-      setUrlImage(res);
-      setValue(name, res);
-
-      successMsg("Upload ảnh đại diện thành công");
-    } catch (e) {
-      errorMsg("Upload ảnh đại diện thất bại");
-    }
-    setLoading(false);
-  };
-
   const handleChangeFile = (e) => {
     const file = e.target?.files?.[0];
-    handleUploadFile(file);
+    const fileRef = ref(storage, `images/image_user_${new Date().getTime()}`);
+    const uploadTask = uploadBytesResumable(fileRef, file);
+
+    uploadTask.on(
+      "stage_changed",
+      (snapshort) => {
+        setLoading(true);
+
+        let progress =
+          (snapshort.bytesTransferred / snapshort.totalBytes) * 100;
+      },
+      (error) => {
+        errorMsg(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+          setUrlImage(downloadUrl);
+          setValue(name, downloadUrl);
+        });
+        successMsg("Upload success");
+        setLoading(false);
+      }
+    );
   };
 
   const renderImage = () => {
