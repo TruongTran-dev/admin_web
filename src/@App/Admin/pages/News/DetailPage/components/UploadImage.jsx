@@ -35,7 +35,12 @@ const UploadImage = (props) => {
 
   const handleChangeFile = (e) => {
     const file = e.target?.files?.[0];
-    const fileRef = ref(storage, `videos/${file?.name}`);
+    const fileRef = ref(
+      storage,
+      `${typeMedia == 0 ? "vides" : "images"}/${
+        file?.name
+      }_${new Date().getTime()}`
+    );
     const uploadTask = uploadBytesResumable(fileRef, file);
 
     uploadTask.on(
@@ -63,7 +68,7 @@ const UploadImage = (props) => {
   const renderImage = () => {
     if (loading) {
       return (
-        <Box className="border-1 w-[200px] aspect-video flex w-full flex-col justify-center cursor-pointer items-center hover:opacity-80">
+        <Box className="border-1 w-[200px] aspect-video flex flex-col justify-center cursor-pointer items-center hover:opacity-80">
           <CircularProgress />
         </Box>
       );
@@ -77,7 +82,7 @@ const UploadImage = (props) => {
     ) : (
       <Box
         sx={{ border: "1px solid #ccc" }}
-        className="border-1 w-[200px] aspect-video flex w-full flex-col justify-center items-center hover:opacity-80 mx-auto"
+        className="border-1 w-[200px] aspect-video flex flex-col justify-center items-center hover:opacity-80 mx-auto"
       >
         {loading ? (
           <CircularProgress />
