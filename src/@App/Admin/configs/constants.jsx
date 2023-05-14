@@ -43,5 +43,5 @@ export const ROUTER_TEACHER = {
     list: "/teacher/classes",
     edit: "/teacher/classes/:id",
   },
-  learningResult: "/teacher/learning-result/:id",
+  learningResult: "/teacher/learning-result/:id/:year",
 };

@@ -15,7 +15,9 @@ import moment from "moment";
 
 const StudentTable = (props) => {
   const navigate = useNavigate();
-  const { tableHandler, handleDelete } = useAdminPageContext();
+  const { tableHandler, handleDelete, methodForm } = useAdminPageContext();
+
+  const { watch } = methodForm;
 
   const columns = useMemo(() => {
     return [
@@ -66,7 +68,11 @@ const StudentTable = (props) => {
               <Tooltip title="Xem điểm">
                 <IconButton
                   onClick={() =>
-                    navigate(`/teacher/learning-result/${data?.id}`)
+                    navigate({
+                      pathname: `/teacher/learning-result/${data?.id}/${watch(
+                        "semesterYear"
+                      )}`,
+                    })
                   }
                   color="warning"
                 >

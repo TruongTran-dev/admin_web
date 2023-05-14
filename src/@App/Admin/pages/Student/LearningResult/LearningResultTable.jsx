@@ -20,11 +20,7 @@ const LearningResultTable = (props) => {
     },
   });
 
-  console.log("============= time", time);
-
   const result = watch("result");
-
-  console.log("============= watch()", watch());
 
   const columns = useMemo(() => {
     return [
@@ -91,7 +87,6 @@ const LearningResultTable = (props) => {
       columnHelper.accessor("semesterSummaryScore", {
         cell: ({ row }) => {
           const findResult = result?.find((i) => i?.id === row.original.id);
-          console.log("============= findResult", findResult);
           if (row.original.semesterSummaryScore) {
             return row.original.semesterSummaryScore;
           }

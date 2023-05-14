@@ -20,9 +20,17 @@ import useCoreTable from "../../../../../@Core/components/Table/hooks/useCoreTab
 import { errorMsg, successMsg } from "../../../../../@Core/helper/Message";
 import { newsSerivce } from "../../../services/newsService";
 import { studentService } from "../../../services/studentService";
+import { useForm } from "react-hook-form";
 // import PropTypes from 'prop-types'
 
 const StudentProvider = (props) => {
+  const methodForm = useForm({
+    defaultValues: {
+      search: "",
+      classId: null,
+      semesterYear: "2022-2023",
+    },
+  });
   const requestStudents = useRequest(studentService.list, {
     manual: true,
     onError: () => errorMsg("Lấy danh sách học sinh thất bại"),
@@ -43,6 +51,7 @@ const StudentProvider = (props) => {
   const data = {
     tableHandler,
     handleDelete,
+    methodForm,
     ...props,
   };
 

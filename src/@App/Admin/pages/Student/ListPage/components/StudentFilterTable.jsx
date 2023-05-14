@@ -8,14 +8,8 @@ import CoreAutocomplete from "../../../../../../@Core/components/Input/CoreAutoc
 // import PropTypes from 'prop-types'
 
 const StudentFilterTable = (props) => {
-  const { tableHandler } = useAdminPageContext();
-  const { control, watch } = useForm({
-    defaultValues: {
-      search: "",
-      classId: null,
-      semesterYear: "2022-2023",
-    },
-  });
+  const { tableHandler, methodForm } = useAdminPageContext();
+  const { control, watch } = methodForm;
 
   const search = useDebounce(watch("search"), 500);
 

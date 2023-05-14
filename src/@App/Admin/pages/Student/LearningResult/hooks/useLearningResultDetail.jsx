@@ -5,11 +5,18 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 export const useLearningResultDetail = (props) => {
-  const { id } = useParams();
+  const { id, year } = useParams();
 
   const { control, watch } = useForm({
     defaultValues: {
-      time: null,
+      time: {
+        label: `Học kì 1 ${year}`,
+        time: {
+          year: year,
+          term: 1,
+        },
+        value: `Học kì 1 ${year}`,
+      },
     },
   });
 
@@ -23,7 +30,7 @@ export const useLearningResultDetail = (props) => {
     manual: true,
   });
 
-  useUpdateEffect(() => {
+  useEffect(() => {
     getLearningResult({ studentId: id, ...time?.time });
   }, [JSON.stringify(watch("time"))]);
 

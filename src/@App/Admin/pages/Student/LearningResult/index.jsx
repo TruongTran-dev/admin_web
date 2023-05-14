@@ -13,7 +13,7 @@ import moment from "moment";
 import LearningResultTable from "./LearningResultTable";
 import CoreAutocomplete from "../../../../../@Core/components/Input/CoreAutocomplete";
 import { BiArrowBack } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import PropTypes from 'prop-types'
 
 const LearnignResult = (props) => {
@@ -28,6 +28,8 @@ const LearnignResult = (props) => {
   } = useLearningResultDetail();
 
   const navigate = useNavigate();
+  const { year } = useParams();
+
   return loadingStudent ? (
     <Box className="mt-40 text-center">
       <CircularProgress />
@@ -69,39 +71,24 @@ const LearnignResult = (props) => {
             className="w-[200px] ml-12"
             options={[
               {
-                label: "Học kì 1 2022-2023",
+                label: `Học kì 1 ${year}`,
                 time: {
-                  year: "2022-2023",
+                  year: year,
                   term: 1,
                 },
-                value: "Học kì 1 2022-2023",
+                value: `Học kì 1 ${year}`,
               },
               {
-                label: "Học kì 2 2022-2023",
+                label: `Học kì 2 ${year}`,
                 time: {
-                  year: "2022-2023",
+                  year: year,
                   term: 2,
                 },
-                value: "Học kì 2 2022-2023",
-              },
-              {
-                label: "Học kì 1 2023-2024",
-                time: {
-                  year: "2023-2024",
-                  term: 1,
-                },
-                value: "Học kì 1 2023-2024",
-              },
-              {
-                label: "Học kì 2 2023-2024",
-                time: {
-                  year: "2023-2024",
-                  term: 2,
-                },
-                value: "Học kì 2 2023-2024",
+                value: `Học kì 2 ${year}`,
               },
             ]}
             size="small"
+            disableClearable
           />
         </Box>
       </Box>
