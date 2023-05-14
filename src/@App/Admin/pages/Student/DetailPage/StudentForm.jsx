@@ -71,7 +71,7 @@ const StudentForm = (props) => {
               <CoreAutocomplete
                 control={control}
                 name="semesterYear"
-                label="Học kì"
+                label="Năm học"
                 returnValueType="enum"
                 required
                 className="w-full px-12 mb-40"

@@ -44,7 +44,7 @@ const LearnignResult = (props) => {
           <Box>Nhập điểm cho:</Box>
           <Box className="flex">
             <Box className="w-1/3 text-[14px] font-bold">Mã HS:</Box>
-            <Box className="w-2/3">{student?.id}</Box>
+            <Box className="w-2/3">{student?.code}</Box>
           </Box>
           <Box className="flex">
             <Box className="w-1/3 text-[14px] font-bold">Tên HS:</Box>
