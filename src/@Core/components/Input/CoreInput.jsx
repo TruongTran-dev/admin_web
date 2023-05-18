@@ -17,6 +17,7 @@ import { Box, FormHelperText, TextField } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 import { useController } from "react-hook-form";
+import { NumberFormatCustom } from "../../helper/Input";
 
 const CoreInput = (props) => {
   const {
@@ -91,6 +92,9 @@ const CoreInput = (props) => {
         // eslint-disable-next-line react/jsx-no-duplicate-props
         InputProps={{
           ...InputProps,
+          ...(type === "number" && {
+            inputComponent: NumberFormatCustom,
+          }),
         }}
         {...restProps}
       />
