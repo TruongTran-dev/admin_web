@@ -23,6 +23,7 @@ import UploadAvatar from "./components/UploadAvatar";
 import SelectClass from "./components/SelectClass";
 import CoreDatePicker from "../../../../../@Core/components/Input/CoreDatePicker";
 import CoreAutocomplete from "../../../../../@Core/components/Input/CoreAutocomplete";
+import CoreDatePickerV2 from "../../../../../@Core/components/Input/CoreDatePickerV2";
 
 const StudentForm = (props) => {
   const { isEdit } = props;
@@ -59,7 +60,15 @@ const StudentForm = (props) => {
               className="w-full px-12 mb-40"
               required
             />
-            <CoreDatePicker
+            {/* <CoreDatePicker
+              control={control}
+              name="dateOfBirth"
+              className="w-full px-12 mb-40"
+              required
+              label="Ngày sinh"
+              placeholder="Chọn ngày sinh"
+            /> */}
+            <CoreDatePickerV2
               control={control}
               name="dateOfBirth"
               className="w-full px-12 mb-40"

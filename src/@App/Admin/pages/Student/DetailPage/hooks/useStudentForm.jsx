@@ -20,6 +20,7 @@ import Yup from "../../../../../../@Core/helper/Yup";
 import { useNavigate } from "react-router-dom";
 import { studentService } from "../../../../services/studentService";
 import moment from "moment";
+import dayjs from "dayjs";
 
 export const useStudentForm = (props) => {
   const { student, isEdit } = props;
@@ -32,7 +33,7 @@ export const useStudentForm = (props) => {
       name: student?.name ?? "",
       imageUrl: student?.imageUrl ?? "",
       classId: student?.classResponse?.id ?? null,
-      dateOfBirth: student?.dateOfBirth ?? null,
+      dateOfBirth: student?.dateOfBirth ? dayjs(student?.dateOfBirth) : null,
       semesterYear: null,
     },
     resolver: yupResolver(
@@ -51,6 +52,10 @@ export const useStudentForm = (props) => {
 
   const onSubmit = methodForm.handleSubmit(
     async (data) => {
+      data.dateOfBirth = moment(new Date(data?.dateOfBirth), "DD-MM-YYYY").add(
+        7,
+        "hours"
+      );
       try {
         await studentService.save(data);
         navigate("/teacher/student");

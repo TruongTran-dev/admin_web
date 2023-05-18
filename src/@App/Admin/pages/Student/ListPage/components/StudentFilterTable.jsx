@@ -35,6 +35,7 @@ const StudentFilterTable = (props) => {
         name="semesterYear"
         label="Năm học"
         returnValueType="enum"
+        disableClearable
         options={[
           { value: "2022-2023", label: "2022-2023" },
           { value: "2023-2024", label: "2023-2024" },
