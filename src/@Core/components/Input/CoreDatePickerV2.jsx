@@ -50,7 +50,10 @@ const CoreDatepickerV2 = (props) => {
                 // mask="____/__/__"
                 format="DD/MM/YYYY"
                 //   readOnly={true}
-                maxDate={maxDate}
+                // maxDate={maxDate}
+
+                minDate={dayjs("1950-01-01")}
+                maxDate={dayjs("2050-01-01")}
                 //   renderInput={(params) => (
                 //     <>
                 //       <TextField
