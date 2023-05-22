@@ -32,6 +32,10 @@ const NewsTable = (props) => {
         cell: (info) => info.getValue(),
         header: "Nội dung",
       }),
+      columnHelper.accessor("createdName", {
+        cell: (info) => info.getValue(),
+        header: "Người tạo",
+      }),
       columnHelper.accessor("typeMedia", {
         cell: (info) => (info.getValue() == 0 ? "Video" : "Ảnh"),
         header: "Kiểu media",
