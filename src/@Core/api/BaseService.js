@@ -19,7 +19,7 @@ export const DEFAULT_RESPONSE = {
   size: 10,
 };
 class BaseService {
-  BASE_URL = "https://chatappserver-production-2f10.up.railway.app";
+  BASE_URL = "http://167.99.65.226:8080/swagger-ui/index.html";
 
   BASE_ENDPOINT = "/api/v1";
 
