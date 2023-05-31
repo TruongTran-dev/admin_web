@@ -19,7 +19,7 @@ export const DEFAULT_RESPONSE = {
   size: 10,
 };
 class BaseService {
-  BASE_URL = "http://167.99.65.226:8080/swagger-ui/index.html";
+  BASE_URL = "http://localhost:8080";
 
   BASE_ENDPOINT = "/api/v1";
 
