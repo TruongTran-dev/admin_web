@@ -28,6 +28,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { CoreConfirmProvider } from "../@Core/components/Confirm/CoreConfirm";
 import { useYupChangeLocale } from "../@Core/helper/Yup";
+import { LoadingFullPage } from "../@App/Admin/Loading/CoreLoading";
 const App = (props) => {
   useYupChangeLocale();
 
@@ -35,6 +36,7 @@ const App = (props) => {
     <CoreAppTheme>
       <CoreConfirmProvider>
         <RouterProvider router={appRouterConfig} />
+        <LoadingFullPage />
       </CoreConfirmProvider>
       <ToastContainer />
     </CoreAppTheme>

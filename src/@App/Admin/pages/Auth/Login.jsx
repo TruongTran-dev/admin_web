@@ -13,6 +13,7 @@ import { ROUTER_ADMIN } from "../../configs/constants";
 import { authService } from "../../services/authService";
 import { errorMsg, successMsg } from "../../../../@Core/helper/Message";
 import LoginIcon from "@mui/icons-material/Login";
+import { hideLoadingPage, showLoadingPage } from "../../components/System";
 
 const FontTitle = ({ variant = "h1", title = "" }) => {
   return (
@@ -70,6 +71,7 @@ const Login = () => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
+    showLoadingPage();
     try {
       const res = await authService.login(data);
 
@@ -80,6 +82,7 @@ const Login = () => {
       errorMsg("Tên tài khoản hoặc mật khẩu không đúng");
       console.log("============= e", e);
     }
+    hideLoadingPage();
   });
 
   const renderFormLogin = () => {
