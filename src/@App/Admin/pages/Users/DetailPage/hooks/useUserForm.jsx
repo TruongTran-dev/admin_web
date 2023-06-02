@@ -73,8 +73,9 @@ export const useUserForm = (props) => {
             : "Thêm mới tài khoản thành công"
         );
       } catch (e) {
+        console.log("============= e", e);
         errorMsg(
-          e,
+          e?.response?.data?.errors?.[0]?.errorMessage,
           isEdit ? "Cập nhật tài khoản thất bại" : "Thêm mới tài khoản thất bại"
         );
       }
