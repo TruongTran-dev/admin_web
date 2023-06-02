@@ -28,36 +28,19 @@ import ChartSale from "./ChartSale";
 import AdminContentPage from "../../components/Layout/AdminContentPage";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const HomePage = (props) => {
   const navigate = useNavigate();
+  const cmsInfor = Cookies.get("ACCOUNT_INFO")
+    ? JSON.parse(Cookies.get("ACCOUNT_INFO"))
+    : null;
+
   return (
     <AdminContentPage
       pageTitle="Overview"
       content={
         <Box className="flex flex-nowrap mt-40 w-2/3 mx-auto">
-          {/* <Box className="w-full sm:w-1/2 px-12 mb-40">
-            <Card>
-              <CardContent>
-                <Typography variant="subtitle2" className="mb-12">
-                  SALES
-                </Typography>
-
-                <ChartSale />
-              </CardContent>
-            </Card>
-          </Box>
-          <Box className="w-full sm:w-1/2 px-12 mb-40">
-            <Card>
-              <CardContent>
-                <Typography variant="subtitle2" className="mb-12">
-                  OVERVIEW
-                </Typography>
-
-                <ChartOverview />
-              </CardContent>
-            </Card>
-          </Box> */}
           <Card className="w-1/3 mx-20 rounded-20">
             <img
               src="https://img.freepik.com/free-icon/class-group_318-59057.jpg"
@@ -74,7 +57,12 @@ const HomePage = (props) => {
             <Divider />
             <Box
               className="flex text-[20px] cursor-pointer hover:text-[#0A8FDC] my-8 justify-center items-center space-x-8"
-              onClick={() => navigate("/teacher/classes")}
+              onClick={() =>
+                cmsInfor?.roles?.includes("ROLE_TEACHER") ||
+                cmsInfor?.roles?.includes("ADMIN")
+                  ? navigate("/teacher/classes")
+                  : null
+              }
             >
               Xem chi tiết
               <ChevronRightIcon className="text-[30px]" />
@@ -94,7 +82,12 @@ const HomePage = (props) => {
             <Divider />
             <Box
               className="flex text-[20px] cursor-pointer hover:text-[#0A8FDC] my-8 justify-center items-center space-x-8"
-              onClick={() => navigate("/admin/subject")}
+              onClick={() =>
+                cmsInfor?.roles?.includes("ROLE_TEACHER") ||
+                cmsInfor?.roles?.includes("ADMIN")
+                  ? navigate("/admin/subject")
+                  : null
+              }
             >
               Xem chi tiết
               <ChevronRightIcon className="text-[30px]" />
@@ -114,7 +107,12 @@ const HomePage = (props) => {
             <Divider />
             <Box
               className="flex text-[20px] cursor-pointer hover:text-[#0A8FDC] my-8 justify-center items-center space-x-8"
-              onClick={() => navigate("/teacher/news")}
+              onClick={() =>
+                cmsInfor?.roles?.includes("ROLE_TEACHER") ||
+                cmsInfor?.roles?.includes("ADMIN")
+                  ? navigate("/teacher/news")
+                  : null
+              }
             >
               Xem chi tiết
               <ChevronRightIcon className="text-[30px]" />
