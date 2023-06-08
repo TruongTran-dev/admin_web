@@ -70,7 +70,6 @@ const UserForm = (props) => {
             variant="contained"
             color="primary"
             loading={isSubmitting}
-            disabled={!isDirty}
           >
             Xác nhận
           </LoadingButton>

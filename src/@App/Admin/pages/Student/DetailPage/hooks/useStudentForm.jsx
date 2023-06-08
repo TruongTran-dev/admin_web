@@ -39,7 +39,7 @@ export const useStudentForm = (props) => {
     resolver: yupResolver(
       Yup.object({
         name: Yup.string().trim().required().min(3).max(255),
-        imageUrl: Yup.string().trim().required(),
+        // imageUrl: Yup.string().trim().required(),
         classId: Yup.mixed().nullable().required(),
         dateOfBirth: Yup.mixed().nullable().required(),
         semesterYear: Yup.mixed().when("name", {

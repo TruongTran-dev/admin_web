@@ -35,9 +35,9 @@ export const useNewsForm = (props) => {
     },
     resolver: yupResolver(
       Yup.object({
-        title: Yup.string().trim().min(3).required(),
-        content: Yup.string().trim().min(3).required(),
-        mediaUrl: Yup.string().trim().required(),
+        // title: Yup.string().trim().min(3).required(),
+        // content: Yup.string().trim().min(3).required(),
+        // mediaUrl: Yup.string().trim().required(),
       })
     ),
   });
