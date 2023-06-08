@@ -55,8 +55,8 @@ export const useUserForm = (props) => {
               "Xác nhận password không hợp lệ"
             ),
         }),
-        fullName: Yup.string().required(),
-        phone: Yup.string().required().phone(),
+        // fullName: Yup.string().required(),
+        // phone: Yup.string().required().phone(),
         roles: Yup.array().min(1),
       })
     ),
