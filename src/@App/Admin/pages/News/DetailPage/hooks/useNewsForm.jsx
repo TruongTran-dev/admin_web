@@ -45,13 +45,21 @@ export const useNewsForm = (props) => {
   const onSubmit = methodForm.handleSubmit(
     async (data) => {
       try {
-        await newsSerivce.save(data);
-        navigate("/teacher/news");
-        successMsg(
-          isEdit
-            ? "Cập nhật bài viết thành công"
-            : "Thêm mới bài viết thành công"
-        );
+        if (
+          data?.title === "" &&
+          data?.content === "" &&
+          data?.mediaUrl === ""
+        ) {
+          errorMsg("Vui lòng nhập ít nhất 1 trường");
+        } else {
+          await newsSerivce.save(data);
+          navigate("/teacher/news");
+          successMsg(
+            isEdit
+              ? "Cập nhật bài viết thành công"
+              : "Thêm mới bài viết thành công"
+          );
+        }
       } catch (e) {
         errorMsg(
           e,
